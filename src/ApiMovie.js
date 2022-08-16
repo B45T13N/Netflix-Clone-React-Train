@@ -51,5 +51,22 @@ export default {
                 items: await fetchMovies("discover/tv?with_type=2"),
             },
         ]
+    },
+    getMovieInfo: async (movieId, type) => {
+        let info = [];
+        if(movieId){
+            switch (type){
+                case 'movie':
+                    info = await fetchMovies(`movie/${movieId}`);
+                    break;
+                case 'tv':
+                    info = await fetchMovies(`tv/${movieId}`);
+                    break;
+
+                default:
+            }
+        }
+
+        return info;
     }
 }
